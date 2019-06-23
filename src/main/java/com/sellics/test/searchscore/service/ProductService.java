@@ -16,17 +16,37 @@ public class ProductService {
 	private static final int MAX_SCORE = 100;
 	private static final int TOP_10 = 10;
 	
+	/**
+	 * default constructor.
+	 * Initialize the productList.
+	 */
 	public ProductService() {
 		this.setProducts(new ArrayList<Product>());
 	}
 	
+	
+	/**
+	 * Service method to get the product based on the search key.
+	 * If the keyword exists in the productList then return the product increasing the rank by one
+	 * Else create a new product with the keyword and rank as 1.
+	 * @param searchKey
+	 * @return Product
+	 */
 	public Product getProduct(String searchKey) {
 		return addProduct(searchKey);
 	}
 	
+	/**
+	 * Service method to get the products list based on the search key.
+	 * If the keyword exists in the productList then return the product increasing the rank by one
+	 * Else create a new product with the keyword and rank as 1.
+	 * @param searchKey
+	 * @return
+	 */
 	public List<Product> getProducts(String searchKey) {
 		return listProduct(searchKey);
 	}
+	
 	
 	private List<Product> listProduct(String searchKey) {
 		
@@ -36,6 +56,14 @@ public class ProductService {
 		return getCandidateList(searchKey);
 	}
 
+	/**
+	 * To add the product to the productList, first check the product exists?
+	 * If product doesn't exists then add the product with rank as 1, 
+	 * If the product exists, then grab the product from the list and increment the rank of the product.
+	 * 
+	 * @param searchKey
+	 * @return
+	 */
 	private Product addProduct(String searchKey) { 
 		Product product = null;
 		Product tempProduct = null;
